@@ -65,4 +65,49 @@ FROM Players
 ORDER By lastname ASC;
 ```
 
+* Results can be formatted. Here's and example of concatenating the first and last name, and changing the label.
 
+```sql
+SELECT playerID, firstname || lastname as name
+FROM Players
+ORDER By lastname ASC;
+```
+### Challenge
+Can you figure out how to add a space between the the first and last names?
+
+* It's possible to calculate aggregate statistics like averages from our table -- some other aggregate functions are max(), min(), count(), and sum()
+
+```sql
+SELECT avg(weight) as avgweight
+FROM Players;
+```
+
+* The DISTINCT clause is used when you need a set of the unique members of a field or combination of fields.
+
+```sql
+SELECT DISTINCT birthcountry
+FROM Players;
+```
+* To filter results, a WHERE clause is used. to list all players that bat lefthanded we can do this:
+
+```sql
+SELECT firstname || lastname as lefties
+FROM Players
+WHERE bats='L';
+```
+* And it's possible to add multiple WHERE conditions using AND and OR
+```sql
+SELECT firstname || lastname as lefties
+FROM Players
+WHERE bats='L' OR bats='B';
+```
+
+###Challenge
+To do a "not equals" comparison, use <> or !=. Try and write a query to list all players who bat and throw differently. 
+
+In Part 2, we'll look at more variations of the WHERE clause as well as SELECT statements that join multiple tables and perform group operations on results.
+
+## Data modelling
+So far, all our examples have used only a single table, but the power of a relational model for data storage becomes more apparent when there are multiple tables involved. In Part 2 of this workshop (next Monday), I'll teach you how to query multiple tables. For the rest of this class, we're going to discuss some basic principles of normalization and entity modelling. 
+
+In our current database, we have some limited player information: name, birthplace, height, weight, and "handedness". Let's think about what happens if we add notions of teams, time, and salaries. We'll begin by listing all the elements and dimensions and then we'll create table diagrams and lines that show the links between tables. I haven't included these diagrams to this document yet, because I think it's important to work through the derivation process. In the process, we'll discuss what's meant by normal forms and keys and other types of entity relationships. 
