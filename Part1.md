@@ -1,9 +1,9 @@
 #SQL Workshop Part 1
-##Outcomes
+## Outcomes
 * Create a simple sql database using the Firefox SQLite Manager
-* Use the INSERT and SELECT commands to modify and query the database
-* Discuss data normalization, including 1NF, 2NF, and 3NF
-##Getting started
+* Introduce some basic SQL commands (INSERT,SELECT) to modify and query the database
+* Introduce data modelling and work through and example.
+## Getting started
 I this workshop we'll use SQLite, a powerful and easy to install database engine. Conveniently, it's built in to the Firefox web browser. If you don't have Firefox installed, please install it now. Once it's installed, you'll need to also install the [SQLite Manager extension](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/).
 
 ![install sqlite](images/install_sqlite.png)
@@ -22,7 +22,7 @@ Once you've installed SQLite Manager, you can start it from the Firefox tools me
 
 * Click OK, and note the code that pops up in the confirmation box. It contains a SQL command for creating a new table in a database. We could also have created this table by typing this command into the "Enter SQL" box and running it. Note the required semi-colon at the end of the command
 
-###Challenge
+### Challenge
 Write a SQL command to create a table called FavoritePlayer containing fields called Fan_name and PlayerID.
 
 ## Add data
@@ -102,7 +102,7 @@ FROM Players
 WHERE bats='L' OR bats='B';
 ```
 
-###Challenge
+### Challenge
 To do a "not equals" comparison, use <> or !=. Try and write a query to list all players who bat and throw differently. 
 
 In Part 2, we'll look at more variations of the WHERE clause as well as SELECT statements that join multiple tables and perform group operations on results.
