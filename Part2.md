@@ -18,10 +18,10 @@ Once you've installed SQLite Manager, you can start it from the Firefox tools me
 [Slides](https://docs.google.com/presentation/d/1RRZoSelHpEGcKapa6E2MAn3NHXVlrbMMbimb2lW8UkA/edit?usp=sharing)
 
 ## Import the example database
-# Navigate to my github site: https://github.com/uc-data-services/dlab-sql-spr16# Either clone the site or download the file sql/mlb2010-2013.sql
-# Save it where you can find it!
-# Start the SQLite Manager from FireFox.
-# Import the file you just downloaded.
+* Navigate to my github site: https://github.com/uc-data-services/dlab-sql-spr16# Either clone the site or download the file sql/mlb2010-2013.sql
+* Save it where you can find it!
+* Start the SQLite Manager from FireFox.
+* Import the file you just downloaded.
 
 ## Join queries
 ### Inner join example:
