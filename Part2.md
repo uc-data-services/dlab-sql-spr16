@@ -22,16 +22,96 @@ Once you've installed SQLite Manager, you can start it from the Firefox tools me
 
 Identify the names of all player who bat left and throw right.
 
+```sql
+SELECT firstname,lastname, salary
+FROM Players INNER JOIN TeamMembers
+ON Players.playerID = TeamMembers.playerID
+AND bats = 'L'
+AND throws = 'R'
+```
 
 Identify the names and team names of all players who bat left and throw right.
 
+```sql
+SELECT firstname,lastname, name
+FROM Players INNER JOIN TeamMembers
+ON Players.playerID = TeamMembers.playerID
+INNER JOIN TeamNames
+ON TeamMembers.teamID = TeamNames.teamID
+AND bats = 'L'
+AND throws = 'R'
+```
+How do we get rid of duplicates?
 
-### Inner join example:
+Challenge:
+Write a query to create an alphabetical list of player names and salaries for the 2013 San Francisco Giants.
 
+### Outer join example:
+Create a list of players in the database who did not play in every year in the sample.
+
+```sql
+SELECT DISTINCT firstname,lastname, yearID
+FROM  Players P  LEFT OUTER JOIN  TeamMembers TM
+ON P.playerID = TM.playerID
+AND yearID is NULL
+ORDER BY lastname, firstname
+```
 
 ## Group by queries
 Example:
-Determine the average salary by "handedness".
+Determine the average salary for players by handedness.
 
+Here is how to do it by one grouping
 
+```sql
+SELECT AVG(salary)
+FROM Players INNER JOIN TeamMembers
+ON Players.playerID = TeamMembers.playerID
+WHERE bats = ‘L’
+AND throws = ‘R’
+```
 
+Hint: To make the output nicer, use the ROUND() function
+
+To compare over all combinations:
+```sql 
+SELECT bats, throws, ROUND(AVG(salary))
+FROM Players INNER JOIN TeamMembers
+ON Players.playerID = TeamMembers.playerID
+GROUP BY bats, throws
+```
+
+It is possible to filter on a calculated value by using "HAVING"
+
+```sql 
+SELECT bats, throws, ROUND(AVG(salary)) as avg_salary
+FROM Players INNER JOIN TeamMembers
+ON Players.playerID = TeamMembers.playerID
+GROUP BY bats, throws
+HAVING avg_salary < 3000000
+```
+
+## RStudio example
+
+```R
+install.packages("RSQLite")
+library(RSQLite)
+dbname <- "D:/Users/hdekker/DLAB_SQL_workshop/db/mlb2010-2013.sqlite"
+driver <- dbDriver("SQLite")
+connect <- dbConnect(driver, dbname=dbname)
+df <- dbGetQuery(connect, "select * from Players")
+```
+
+## Python example
+
+```python
+import sqlite3
+
+# Connecting to the database file
+dbname = "D:/Users/hdekker/DLAB_SQL_workshop/db/mlb2010-2013.sqlite"
+conn = sqlite3.connect(dbname)
+c = conn.cursor()
+
+c.execute('SELECT * FROM Players')
+all_rows = c.fetchall()
+```
