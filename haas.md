@@ -121,10 +121,10 @@ Write a query to create an alphabetical list of player names and salaries for th
 Determine if there are any players in the TeamMembers table without corresponding data in the Players table.
 
 ```sql
-SELECT DISTINCT tm.playerID, yearID
+SELECT DISTINCT tm.playerID
 FROM TeamMembers TM LEFT OUTER JOIN  Players P
 ON TM.playerID = P.playerID
-AND P.playerID IS null
+WHERE P.playerID IS null
 ```
 
 ## Group by queries
@@ -137,8 +137,8 @@ Here is how to do it by one grouping
 SELECT AVG(salary)
 FROM Players INNER JOIN TeamMembers
 ON Players.playerID = TeamMembers.playerID
-WHERE bats = L
-AND throws = R
+WHERE bats = 'L'
+AND throws = 'R'
 ```
 
 Hint: To make the output nicer, use the ROUND() function
