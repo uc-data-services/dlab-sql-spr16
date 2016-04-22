@@ -1,6 +1,6 @@
 
 
-#This document: https://git.io/vwBnm
+#This document: https://git.io/vwBBN
 ## Outcomes
 * learn inner join usage and syntax
 * learn outer join usage and syntax
@@ -166,22 +166,10 @@ HAVING avg_salary < 3000000
 ```R
 install.packages("RSQLite")
 library(RSQLite)
-dbname <- "D:/Users/hdekker/DLAB_SQL_workshop/db/mlb2010-2013.sqlite"
+dbname <- "~/Documents/dlab-sql-spr16/db/mlb2013.sqlite"
 driver <- dbDriver("SQLite")
 connect <- dbConnect(driver, dbname=dbname)
 df <- dbGetQuery(connect, "select * from Players")
 ```
 
-## Python example
 
-```python
-import sqlite3
-
-# Connecting to the database file
-dbname = "D:/Users/hdekker/DLAB_SQL_workshop/db/mlb2010-2013.sqlite"
-conn = sqlite3.connect(dbname)
-c = conn.cursor()
-
-c.execute('SELECT * FROM Players')
-all_rows = c.fetchall()
-```
