@@ -45,7 +45,7 @@ INSERT INTO "Players" VALUES('romose01','USA','CA','Sergio','Romo',185,70,'R','R
 ```
 
 ## Queries
-* Data queries require at least two component, SELECT and FROM
+* Data queries require at least two components, SELECT and FROM
 * For example, all the data in Players can be retrieved like this:
 ```sql
 SELECT * 

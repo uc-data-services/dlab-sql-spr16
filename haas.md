@@ -29,6 +29,64 @@ Once you've installed SQLite Manager, you can start it from the Firefox tools me
  * Save it where you can find it!
  * Start the SQLite Manager from FireFox.
  * Import the file you just downloaded.
+## Basic queries
+* Data queries require at least two components, SELECT and FROM
+* For example, all the data in Players can be retrieved like this:
+```sql
+SELECT * 
+FROM Players;
+```
+* SELECT can contain specific field names.
+
+```sql
+SELECT playerID, firstname, lastname
+FROM Players;
+```
+* Results can be ordered
+
+```sql
+SELECT playerID, firstname, lastname
+FROM Players
+ORDER By lastname ASC;
+```
+
+* Results can be formatted. Here's and example of concatenating the first and last name, and changing the label.
+
+```sql
+SELECT playerID, firstname || lastname as name
+FROM Players
+ORDER By lastname ASC;
+```
+### Challenge
+Can you figure out how to add a space between the the first and last names?
+
+* It's possible to calculate aggregate statistics like averages from our table -- some other aggregate functions are max(), min(), count(), and sum()
+
+```sql
+SELECT avg(weight) as avgweight
+FROM Players;
+```
+
+* The DISTINCT clause is used when you need a set of the unique members of a field or combination of fields.
+
+```sql
+SELECT DISTINCT birthcountry
+FROM Players;
+```
+* To filter results, a WHERE clause is used. to list all players that bat lefthanded we can do this:
+
+```sql
+SELECT firstname || lastname as lefties
+FROM Players
+WHERE bats='L';
+```
+* And it's possible to add multiple WHERE conditions using AND and OR
+```sql
+SELECT firstname || lastname as lefties
+FROM Players
+WHERE bats='L' OR bats='B';
+```
+
 
 ## Join queries
 ### Inner join example:
@@ -79,8 +137,8 @@ Here is how to do it by one grouping
 SELECT AVG(salary)
 FROM Players INNER JOIN TeamMembers
 ON Players.playerID = TeamMembers.playerID
-WHERE bats = ‘L’
-AND throws = ‘R’
+WHERE bats = Â‘LÂ’
+AND throws = Â‘RÂ’
 ```
 
 Hint: To make the output nicer, use the ROUND() function
